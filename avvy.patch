@@ -1,0 +1,16 @@
+diff --git a/package.json b/package.json
+index 14961bd..3cacb0b 100644
+--- a/package.json
++++ b/package.json
+@@ -6,8 +6,9 @@
+   "main": "./build/main.cjs",
+   "module": "./main.js",
+   "exports": {
+-    "import": "./main.js",
+-    "require": "./build/main.cjs"
++    "./src/f1field.js": "./src/f1field.js",
++    "./src/scalar.js": "./src/scalar.js",
++    "./src/curves.js": "./src/curves.js"
+   },
+   "scripts": {
+     "test": "mocha",
