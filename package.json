@@ -6,6 +6,7 @@
   "main": "./build/main.cjs",
   "module": "./main.js",
   "exports": {
+    "./package.json": "./package.json",
     "./src/f1field.js": "./src/f1field.js",
     "./src/scalar.js": "./src/scalar.js",
     "./src/curves.js": "./src/curves.js"
