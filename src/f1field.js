@@ -2,6 +2,7 @@
 import * as Scalar from "./scalar.js";
 import * as futils from "./futils.js";
 import buildSqrt from "./fsqrt.js";
+import {getRandomBytes} from "./random.js";
 import FFFT from "./fft.js";
 
 export default class ZqField {
@@ -273,6 +274,15 @@ export default class ZqField {
         } else {
             return (a>= this.p) ? a%this.p : a;
         }
+    }
+
+    random() {
+        const nBytes = (this.bitLength*2 / 8);
+        let res =this.zero;
+        for (let i=0; i<nBytes; i++) {
+            res = (res << BigInt(8)) + BigInt(getRandomBytes(1)[0]);
+        }
+        return res % this.p;
     }
 
     toString(a, base) {

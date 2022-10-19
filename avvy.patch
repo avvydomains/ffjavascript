@@ -23,38 +23,3 @@ index 9e7d574..00798c8 100644
  *.sublime-workspace
  
 +*.swp
-diff --git a/src/f1field.js b/src/f1field.js
-index 5a93b4e..02f47bf 100644
---- a/src/f1field.js
-+++ b/src/f1field.js
-@@ -2,7 +2,6 @@
- import * as Scalar from "./scalar.js";
- import * as futils from "./futils.js";
- import buildSqrt from "./fsqrt.js";
--import {getRandomBytes} from "./random.js";
- import FFFT from "./fft.js";
- 
- export default class ZqField {
-@@ -276,15 +275,6 @@ export default class ZqField {
-         }
-     }
- 
--    random() {
--        const nBytes = (this.bitLength*2 / 8);
--        let res =this.zero;
--        for (let i=0; i<nBytes; i++) {
--            res = (res << BigInt(8)) + BigInt(getRandomBytes(1)[0]);
--        }
--        return res % this.p;
--    }
--
-     toString(a, base) {
-         base = base || 10;
-         let vs;
-@@ -363,4 +353,4 @@ export default class ZqField {
-     toObject(a) {
-         return a;
-     }
--}
-\ No newline at end of file
-+}
