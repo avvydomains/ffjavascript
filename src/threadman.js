@@ -23,7 +23,6 @@ const MEM_SIZE = 25;  // Memory size in 64K Pakes (1600Kb)
 
 
 import thread from "./threadman_thread.js";
-import os from "os";
 import Worker from "web-worker";
 
 class Deferred {
@@ -95,17 +94,7 @@ export default async function buildThreadManager(wasm, singleThread) {
         tm.pendingDeferreds = [];
         tm.working = [];
 
-        let concurrency;
-
-        if ((typeof(navigator) === "object") && navigator.hardwareConcurrency) {
-            concurrency = navigator.hardwareConcurrency;
-        } else {
-            concurrency = os.cpus().length;
-        }
-
-        if(concurrency == 0){
-            concurrency = 2;
-        }
+        let concurrency = 1;
 
         // Limit to 64 threads for memory reasons.
         if (concurrency>64) concurrency=64;
